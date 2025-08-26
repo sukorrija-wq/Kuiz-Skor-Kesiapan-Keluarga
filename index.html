@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kuiz Skor Kesiapan Keluarga – Cek Tahap Perlindungan Anda</title>
+  <meta name="description" content="Jawab 1 minit kuiz mudah untuk lihat skor kesiapan kewangan keluarga anda. Dapatkan cadangan tindakan dan jana poster untuk dikongsi!" />
+  <meta property="og:title" content="Kuiz Skor Kesiapan Keluarga" />
+  <meta property="og:description" content="Jawab 1 minit kuiz untuk lihat skor kesiapan kewangan anda & dapatkan cadangan tindakan." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/og-image.png" />
+  <meta name="theme-color" content="#0ea5e9" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛡️</text></svg>">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .gradient-bg{background:radial-gradient(1200px 600px at 10% -10%, rgba(14,165,233,.25), transparent 60%),
+                 radial-gradient(1200px 600px at 110% 10%, rgba(99,102,241,.25), transparent 60%)}
+  </style>
+</head>
+<body class="min-h-screen gradient-bg text-slate-800">
+  <header class="max-w-3xl mx-auto px-4 pt-10 pb-4">
+    <h1 class="text-3xl sm:text-4xl font-bold tracking-tight">Kuiz <span class="text-sky-600">Skor Kesiapan Keluarga</span></h1>
+    <p class="mt-2 text-slate-600">Ambil masa ~1 minit. Ketahui skor 0–100 dan cadangan tindakan. 
+      <span class="inline-flex items-center gap-2 bg-white/70 px-2 py-1 rounded-lg ml-2 text-sm">🛡️ Bukan nasihat kewangan; tujuan maklumat umum sahaja.</span>
+    </p>
+  </header>
+
+  <main class="max-w-3xl mx-auto px-4 pb-20">
+    <!-- Card -->
+    <div class="bg-white/80 backdrop-blur rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+      <div class="p-6 sm:p-8">
+        <!-- Lead capture (optional name) -->
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <label class="block">
+            <span class="text-sm font-medium text-slate-700">Nama (pilihan)</span>
+            <input id="name" type="text" placeholder="cth: Sukor" class="mt-1 w-full rounded-xl border-slate-300 focus:border-sky-500 focus:ring-sky-500" />
+          </label>
+          <label class="block">
+            <span class="text-sm font-medium text-slate-700">Status pekerjaan</span>
+            <select id="job" class="mt-1 w-full rounded-xl border-slate-300 focus:border-sky-500 focus:ring-sky-500">
+              <option value="tetap">Gaji tetap</option>
+              <option value="sendiri">Sendiri / gig / komisen</option>
+            </select>
+          </label>
+        </div>
+
+        <form id="quiz" class="space-y-6">
+          <!-- Q1 Dana kecemasan -->
+          <fieldset>
+            <legend class="font-semibold">1) Dana kecemasan anda?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="emer" value="20" required> Tiada</label>
+              <label class="flex items-center gap-2"><input type="radio" name="emer" value="10"> &lt; 3 bulan perbelanjaan</label>
+              <label class="flex items-center gap-2"><input type="radio" name="emer" value="3"> 3–6 bulan</label>
+              <label class="flex items-center gap-2"><input type="radio" name="emer" value="0"> &gt; 6 bulan</label>
+            </div>
+          </fieldset>
+
+          <!-- Q2 Income protection -->
+          <fieldset>
+            <legend class="font-semibold">2) Pelan ganti gaji / hibah berkuatkuasa?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="incomeProt" value="0" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="incomeProt" value="25"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q3 Medical card -->
+          <fieldset>
+            <legend class="font-semibold">3) Medical card aktif?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="med" value="0" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="med" value="10"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q4 Hutang -->
+          <fieldset>
+            <legend class="font-semibold">4) Nisbah hutang &gt; 40% daripada gaji?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="debt" value="12" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="debt" value="0"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q5 Tanggungan -->
+          <fieldset>
+            <legend class="font-semibold">5) Berapa orang tanggungan bergantung pada gaji anda?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="dep" value="0" required> 0</label>
+              <label class="flex items-center gap-2"><input type="radio" name="dep" value="5"> 1</label>
+              <label class="flex items-center gap-2"><input type="radio" name="dep" value="10"> 2</label>
+              <label class="flex items-center gap-2"><input type="radio" name="dep" value="15"> 3 atau lebih</label>
+            </div>
+          </fieldset>
+
+          <!-- Q6 Side income -->
+          <fieldset>
+            <legend class="font-semibold">6) Ada pendapatan sampingan yang stabil?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="side" value="0" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="side" value="6"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q7 Kesihatan -->
+          <fieldset>
+            <legend class="font-semibold">7) Status kesihatan semasa (tiada penyakit kritikal / kemalangan besar)?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="health" value="0" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="health" value="8"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q8 Simpanan auto -->
+          <fieldset>
+            <legend class="font-semibold">8) Ada auto-debit simpanan / tabung khas?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="autosave" value="0" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="autosave" value="6"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q9 Sokongan keluarga -->
+          <fieldset>
+            <legend class="font-semibold">9) Ada sandaran keluarga/waris yang boleh bantu ≥ 3 bulan?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="support" value="2" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="support" value="5"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <button type="submit" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-sky-600 text-white font-semibold hover:bg-sky-700 active:scale-[.99]">Kira Skor</button>
+        </form>
+
+        <!-- Result -->
+        <section id="result" class="hidden mt-10">
+          <div class="flex items-center justify-between gap-4 flex-wrap">
+            <h2 class="text-2xl font-bold">Keputusan</h2>
+            <button id="resetBtn" class="px-4 py-2 rounded-lg border font-medium">Ulang Kuiz</button>
+          </div>
+
+          <div class="mt-6 grid sm:grid-cols-2 gap-6 items-start">
+            <div>
+              <div class="mb-3 text-sm text-slate-600">Skor kesiapan anda</div>
+              <div class="w-full h-4 bg-slate-200 rounded-full overflow-hidden">
+                <div id="bar" class="h-4 rounded-full transition-all" style="width:0%"></div>
+              </div>
+              <div class="mt-3 flex items-baseline gap-3">
+                <div id="score" class="text-4xl font-extrabold">0</div>
+                <div id="label" class="text-lg font-semibold"></div>
+              </div>
+              <p id="desc" class="mt-3 text-slate-700"></p>
+
+              <div class="mt-6 grid gap-3">
+                <a href="https://sukorrija-wq.github.io/hibah-calc/" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700">Kira Pelan Ganti Gaji &rarr;</a>
+                <button id="shareBtn" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border font-semibold">Kongsi keputusan</button>
+                <button id="dlPoster" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border font-semibold">Muat turun poster</button>
+              </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-xl p-4 border">
+              <canvas id="posterCanvas" class="w-full rounded-lg" width="1080" height="1350" aria-label="Poster skor"></canvas>
+              <p class="text-xs text-slate-500 mt-2">Tip: Muat turun poster dan kongsi di Facebook/WhatsApp. Ajak rakan buat kuiz ini.</p>
+            </div>
+          </div>
+        </section>
+
+        <p class="mt-10 text-xs text-slate-500">Penafian: Kuiz ini hanyalah panduan umum. Keputusan tidak menjamin kelulusan atau manfaat mana-mana produk. Pertimbangkan bajet dan keperluan anda. Elakkan istilah “simpanan” untuk produk perlindungan semata-mata.</p>
+      </div>
+    </div>
+
+    <footer class="max-w-3xl mx-auto text-center text-xs text-slate-500 mt-6">
+      Dibina untuk <span class="font-medium">Sukor</span>. © <script>document.write(new Date().getFullYear())</script>
+    </footer>
+  </main>
+
+  <script>
+    // ====== Config (edit nombor WhatsApp jika mahu paparkan butang WhatsApp) ======
+    const WHATSAPP_NUMBER = ""; // contoh: "60123456789" (tanpa +). Jika kosong, tiada butang WA.
+
+    // ====== Helpers ======
+    const $ = (sel) => document.querySelector(sel);
+
+    function clamp(n, min, max){return Math.min(Math.max(n, min), max)}
+
+    function badgeColor(score){
+      if(score >= 80) return ['Mantap', 'Kedudukan anda baik. Kekalkan disiplin dan pertimbangkan menaikkan perlindungan mengikut kemampuan.', '#059669'];
+      if(score >= 60) return ['OK', 'Asas agak kukuh. Boleh mantapkan perlindungan pendapatan & medical card jika ada ruang.', '#0ea5e9'];
+      if(score >= 40) return ['Rentan', 'Ada beberapa jurang penting. Mula dengan pelan ganti gaji bajet (cth RM50–RM90) dan bina dana kecemasan.', '#f59e0b'];
+      return ['Bahaya', 'Banyak jurang kritikal. Mulakan tindakan minimum: pelan ganti gaji bajet & bina dana kecemasan.', '#ef4444'];
+    }
+
+    function drawPoster({name, score}){
+      const canvas = document.getElementById('posterCanvas');
+      const ctx = canvas.getContext('2d');
+      const W = canvas.width, H = canvas.height;
+
+      // Background gradient
+      const grad = ctx.createLinearGradient(0,0,W,H);
+      grad.addColorStop(0, '#e0f2fe');
+      grad.addColorStop(1, '#eef2ff');
+      ctx.fillStyle = grad; ctx.fillRect(0,0,W,H);
+
+      // Title
+      ctx.fillStyle = '#0f172a';
+      ctx.font = 'bold 64px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      ctx.fillText('Skor Kesiapan Keluarga', 64, 140);
+
+      // Score circle
+      const [label, _, color] = badgeColor(score);
+      const cx = W/2, cy = 520, r = 180;
+      ctx.lineWidth = 22; ctx.strokeStyle = '#e5e7eb';
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.stroke();
+
+      const ang = (score/100) * Math.PI*2;
+      ctx.strokeStyle = color;
+      ctx.beginPath(); ctx.arc(cx, cy, r, -Math.PI/2, -Math.PI/2 + ang); ctx.stroke();
+
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '900 120px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      const sc = String(Math.round(score));
+      const scW = ctx.measureText(sc).width;
+      ctx.fillText(sc, cx - scW/2, cy + 40);
+
+      ctx.font = '600 36px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      const lblW = ctx.measureText(label).width;
+      ctx.fillStyle = color; ctx.fillText(label, cx - lblW/2, cy + 90);
+
+      // Name
+      if(name){
+        ctx.fillStyle = '#334155';
+        ctx.font = '500 40px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+        const nm = `Nama: ${name}`;
+        const nmW = ctx.measureText(nm).width;
+        ctx.fillText(nm, cx - nmW/2, cy + 150);
+      }
+
+      // CTA box
+      ctx.fillStyle = '#ffffff';
+      const boxX = 64, boxY = 760, boxW = W - 128, boxH = 400;
+      ctx.roundRect?.(boxX, boxY, boxW, boxH, 28);
+      if(!ctx.roundRect){ // fallback
+        ctx.beginPath();
+        ctx.rect(boxX, boxY, boxW, boxH);
+      }
+      ctx.fill();
+      ctx.strokeStyle = '#e5e7eb'; ctx.lineWidth = 2; ctx.stroke();
+
+      ctx.fillStyle = '#0f172a';
+      ctx.font = '700 46px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      ctx.fillText('Tindakan Disyorkan', boxX + 40, boxY + 80);
+
+      ctx.fillStyle = '#334155';
+      ctx.font = '400 34px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      const tips = [
+        '• Mulakan pelan ganti gaji bajet & bina dana kecemasan',
+        '• Semak medical card & had tahunan',
+        '• Kemas kini penama/hibah, elak salah faham',
+        '• Kira kadar anda: hibah-calc'
+      ];
+      let y = boxY + 130;
+      tips.forEach(t => { ctx.fillText(t, boxX + 40, y); y += 56; });
+
+      // Footer
+      ctx.fillStyle = '#64748b';
+      ctx.font = '400 28px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      ctx.fillText('Kuiz panduan umum sahaja. Dapatkan nasihat berlesen jika perlu.', 64, H - 40);
+    }
+
+    function computeScore(form){
+      let risk = 0;
+      const getVal = (n) => Number(new FormData(form).get(n));
+      risk += getVal('emer');
+      risk += getVal('incomeProt');
+      risk += getVal('med');
+      risk += getVal('debt');
+      risk += getVal('dep');
+      risk += getVal('side');
+      risk += getVal('health');
+      risk += getVal('autosave');
+      risk += getVal('support');
+      if($('#job').value === 'sendiri') risk += 8; // kerja tak tetap = lebih risiko
+      return clamp(100 - risk, 0, 100);
+    }
+
+    function animateBar(to, color){
+      const bar = $('#bar');
+      let cur = 0; const step = () => { cur += (to - cur) * 0.15; if(Math.abs(cur - to) < 0.5) cur = to; bar.style.width = cur + '%'; if(cur !== to) requestAnimationFrame(step); }; step();
+      bar.style.background = color;
+    }
+
+    function showResult(score){
+      const [label, desc, color] = badgeColor(score);
+      $('#result').classList.remove('hidden');
+      $('#score').textContent = Math.round(score);
+      $('#label').textContent = label;
+      $('#label').style.color = color;
+      $('#desc').textContent = desc;
+      animateBar(score, color);
+      const name = ($('#name').value || '').trim();
+      drawPoster({name, score});
+      // Save last score
+      try { localStorage.setItem('kesiapan:last', JSON.stringify({name, score, t: Date.now()})); } catch {}
+    }
+
+    document.getElementById('quiz').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const score = computeScore(e.target);
+      showResult(score);
+      window.scrollTo({top: document.getElementById('result').offsetTop - 16, behavior: 'smooth'});
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', ()=>{
+      document.getElementById('quiz').reset();
+      $('#result').classList.add('hidden');
+      $('#bar').style.width = '0%';
+    });
+
+    document.getElementById('dlPoster').addEventListener('click', ()=>{
+      const link = document.createElement('a');
+      link.download = 'skor-kesiapan-keluarga.png';
+      link.href = document.getElementById('posterCanvas').toDataURL('image/png');
+      link.click();
+    });
+
+    document.getElementById('shareBtn').addEventListener('click', async ()=>{
+      const name = ($('#name').value || '').trim();
+      const score = $('#score').textContent;
+      const text = `Skor Kesiapan Keluarga saya: ${score}/100${name?` (Nama: ${name})`:''}. Cuba kuiz ini & kira pelan ganti gaji anda!`;
+      const url = location.href.split('#')[0];
+      try{
+        if(navigator.share){ await navigator.share({title: 'Kuiz Skor Kesiapan Keluarga', text, url}); }
+        else{
+          await navigator.clipboard.writeText(text + '\n' + url);
+          alert('Keputusan disalin. Boleh tampal di media sosial/WhatsApp.');
+        }
+      }catch(err){ console.log(err); }
+    });
+
+    // Optional: render WhatsApp CTA if number provided
+    (function setupWA(){
+      if(!WHATSAPP_NUMBER) return;
+      const btn = document.createElement('a');
+      btn.className = 'inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700';
+      btn.textContent = 'WhatsApp saya';
+      btn.id = 'waBtn';
+      btn.target = '_blank';
+      const msg = encodeURIComponent('Hai, saya baru siap Kuiz Skor Kesiapan Keluarga. Boleh bantu semak pelan ganti gaji saya?');
+      btn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
+      document.querySelector('#result .grid').appendChild(btn);
+    })();
+
+    // Load last
+    (function loadLast(){
+      try{
+        const last = JSON.parse(localStorage.getItem('kesiapan:last') || 'null');
+        if(last && Date.now() - last.t < 1000*60*60*24*7){
+          $('#name').value = last.name || '';
+        }
+      }catch{}
+    })();
+  </script>
+</body>
+</html>
