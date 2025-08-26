@@ -47,7 +47,90 @@
         </div>
 
         <form id="quiz" class="space-y-6">
-          <!-- questions ... (sama macam sebelum ini) -->
+          <!-- Q1 Dana kecemasan -->
+          <fieldset>
+            <legend class="font-semibold">1) Dana kecemasan anda?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="emer" value="20" required> Tiada</label>
+              <label class="flex items-center gap-2"><input type="radio" name="emer" value="10"> &lt; 3 bulan perbelanjaan</label>
+              <label class="flex items-center gap-2"><input type="radio" name="emer" value="3"> 3–6 bulan</label>
+              <label class="flex items-center gap-2"><input type="radio" name="emer" value="0"> &gt; 6 bulan</label>
+            </div>
+          </fieldset>
+
+          <!-- Q2 Income protection -->
+          <fieldset>
+            <legend class="font-semibold">2) Pelan ganti gaji / hibah berkuatkuasa?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="incomeProt" value="0" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="incomeProt" value="25"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q3 Medical card -->
+          <fieldset>
+            <legend class="font-semibold">3) Medical card aktif?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="med" value="0" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="med" value="10"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q4 Hutang -->
+          <fieldset>
+            <legend class="font-semibold">4) Nisbah hutang &gt; 40% daripada gaji?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="debt" value="12" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="debt" value="0"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q5 Tanggungan -->
+          <fieldset>
+            <legend class="font-semibold">5) Berapa orang tanggungan bergantung pada gaji anda?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="dep" value="0" required> 0</label>
+              <label class="flex items-center gap-2"><input type="radio" name="dep" value="5"> 1</label>
+              <label class="flex items-center gap-2"><input type="radio" name="dep" value="10"> 2</label>
+              <label class="flex items-center gap-2"><input type="radio" name="dep" value="15"> 3 atau lebih</label>
+            </div>
+          </fieldset>
+
+          <!-- Q6 Side income -->
+          <fieldset>
+            <legend class="font-semibold">6) Ada pendapatan sampingan yang stabil?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="side" value="0" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="side" value="6"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q7 Kesihatan -->
+          <fieldset>
+            <legend class="font-semibold">7) Status kesihatan semasa (tiada penyakit kritikal / kemalangan besar)?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="health" value="0" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="health" value="8"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q8 Simpanan auto -->
+          <fieldset>
+            <legend class="font-semibold">8) Ada auto-debit simpanan / tabung khas?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="autosave" value="0" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="autosave" value="6"> Tidak</label>
+            </div>
+          </fieldset>
+
+          <!-- Q9 Sokongan keluarga -->
+          <fieldset>
+            <legend class="font-semibold">9) Ada sandaran keluarga/waris yang boleh bantu ≥ 3 bulan?</legend>
+            <div class="mt-2 grid sm:grid-cols-2 gap-2">
+              <label class="flex items-center gap-2"><input type="radio" name="support" value="2" required> Ya</label>
+              <label class="flex items-center gap-2"><input type="radio" name="support" value="5"> Tidak</label>
+            </div>
+          </fieldset>
 
           <button type="submit" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-sky-600 text-white font-semibold hover:bg-sky-700 active:scale-[.99]">Kira Skor</button>
         </form>
@@ -75,7 +158,8 @@
                 <a id="toCalc" href="https://sukorrija-wq.github.io/hibah-calc/" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-emerald-600 text-white font-semibold hover:bg-emerald-700">Kira Pelan Ganti Gaji &rarr;</a>
                 <button id="shareBtn" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border font-semibold">Kongsi keputusan</button>
                 <button id="dlPoster" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl border font-semibold">Muat turun poster</button>
-                <a id="waBtn" href="#" target="_blank" class="hidden inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700">WhatsApp saya</a>
+                <!-- WhatsApp static CTA (tanpa pop up) -->
+                <a id="waBtnStatic" href="#" target="_blank" class="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700">WhatsApp saya</a>
               </div>
             </div>
 
@@ -95,22 +179,8 @@
     </footer>
   </main>
 
-  <!-- Modal WhatsApp CTA -->
-  <div id="waModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4 z-50">
-    <div class="bg-white rounded-2xl shadow-xl max-w-md w-full overflow-hidden">
-      <div class="p-6">
-        <h3 class="text-xl font-bold">Terus WhatsApp Sukor?</h3>
-        <p class="mt-2 text-slate-600 text-sm">Nak saya bantu semak skor & cadangkan pelan bajet ikut kemampuan anda?</p>
-        <div class="mt-5 grid gap-3 sm:grid-cols-2">
-          <a id="waGoBtn" href="#" target="_blank" class="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700">WhatsApp sekarang</a>
-          <button id="waLaterBtn" class="px-4 py-3 rounded-xl border font-semibold">Nanti dulu</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script>
-    const WHATSAPP_NUMBER = "+60169514414"; 
+    const WHATSAPP_NUMBER = "+60169514414"; // kita sanitize ke nombor sahaja bila bina link
     const $ = (sel) => document.querySelector(sel);
 
     function clamp(n, min, max){return Math.min(Math.max(n, min), max)}
@@ -186,6 +256,13 @@
       const name = (document.getElementById('name').value || '').trim();
       drawPoster({name, score});
       try{ localStorage.setItem('kesiapan:last', JSON.stringify({name, score, t: Date.now()})); }catch{}
+
+      // Set link WhatsApp static CTA (sanitize nombor)
+      const digits = WHATSAPP_NUMBER.replace(/[^0-9]/g,'');
+      const msg = encodeURIComponent(`Assalamualaikum, saya ${name||'—'}. Skor Kesiapan saya ${Math.round(score)}/100. Mohon bantu semak & cadangkan pelan bajet.`);
+      const waLink = `https://wa.me/${digits}?text=${msg}`;
+      const waBtn = document.getElementById('waBtnStatic');
+      if(waBtn) waBtn.href = waLink;
     }
 
     document.getElementById('quiz').addEventListener('submit', (e)=>{
@@ -193,42 +270,12 @@
       const score = computeScore(e.target);
       showResult(score);
       window.scrollTo({top: document.getElementById('result').offsetTop - 16, behavior: 'smooth'});
-      // ---- Auto CTA WhatsApp ----
-      try{
-        const shown = localStorage.getItem('kesiapan:waPrompted');
-        if(!shown){
-          const name = (document.getElementById('name').value||'').trim();
-          const msg = encodeURIComponent(`Assalamualaikum, saya ${name||'—'}. Skor Kesiapan saya ${Math.round(score)}/100. Mohon bantu semak & cadangkan pelan bajet.`);
-          const waLink = `https://wa.me/${WHATSAPP_NUMBER.replace('+','')}?text=${msg}`;
-          const waBtn = document.getElementById('waGoBtn');
-          waBtn.href = waLink;
-          document.getElementById('waModal').classList.remove('hidden');
-          document.getElementById('waModal').classList.add('flex');
-        }
-      }catch{ /* ignore */ }
     });
 
-    // Modal handlers
-    (function initWAModal(){
-      const modal = document.getElementById('waModal');
-      const later = document.getElementById('waLaterBtn');
-      const go = document.getElementById('waGoBtn');
-      function close(){ modal.classList.add('hidden'); modal.classList.remove('flex'); }
-      later?.addEventListener('click', ()=>{ try{ localStorage.setItem('kesiapan:waPrompted','1'); }catch{} close(); });
-      go?.addEventListener('click', ()=>{ try{ localStorage.setItem('kesiapan:waPrompted','1'); }catch{} close(); });
-      modal?.addEventListener('click', (ev)=>{ if(ev.target===modal){ close(); } });
-      window.addEventListener('keydown', (ev)=>{ if(ev.key==='Escape' && !modal.classList.contains('hidden')) close(); });
-    })();
-      const score = computeScore(e.target);
-      showResult(score);
-      window.scrollTo({top: document.getElementById('result').offsetTop - 16, behavior: 'smooth'});
-      // Auto show WhatsApp CTA selepas kira skor
-      const waBtn = document.getElementById('waBtn');
-      if(waBtn){
-        const msg = encodeURIComponent('Hai, saya baru siap Kuiz Skor Kesiapan Keluarga. Boleh bantu semak pelan ganti gaji saya?');
-        waBtn.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`;
-        waBtn.classList.remove('hidden');
-      }
+    document.getElementById('resetBtn').addEventListener('click', ()=>{
+      document.getElementById('quiz').reset();
+      document.getElementById('result').classList.add('hidden');
+      document.getElementById('bar').style.width = '0%';
     });
 
     document.getElementById('toCalc').addEventListener('click', async ()=>{
@@ -237,24 +284,30 @@
 
     // Count visits
     (async ()=>{
-      const NS="kesiapan", KEY="sukor-kuiz";
-      await fetch(`https://api.countapi.xyz/create?namespace=${NS}&key=${KEY}&value=0`);
-      const r = await fetch(`https://api.countapi.xyz/hit/${NS}/${KEY}`);
-      const {value} = await r.json();
-      document.getElementById('visits').textContent = `👀 Dilihat ${value} kali`;
+      try{
+        const NS="kesiapan", KEY="sukor-kuiz";
+        await fetch(`https://api.countapi.xyz/create?namespace=${NS}&key=${KEY}&value=0`);
+        const r = await fetch(`https://api.countapi.xyz/hit/${NS}/${KEY}`);
+        const {value} = await r.json();
+        document.getElementById('visits').textContent = `👀 Dilihat ${value} kali`;
+      }catch(e){}
     })();
 
+    document.getElementById('dlPoster').addEventListener('click', ()=>{
+      const link = document.createElement('a');
+      link.download = 'skor-kesiapan.png';
+      link.href = document.getElementById('posterCanvas').toDataURL('image/png');
+      link.click();
+    });
+
     document.getElementById('shareBtn').addEventListener('click', async ()=>{
-      const name = ($('#name').value || '').trim();
-      const score = $('#score').textContent;
-      const text = `Skor Kesiapan Keluarga saya: ${score}/100${name?` (Nama: ${name})`:''}. Cuba kuiz ini & kira pelan ganti gaji anda! #SukorRijaLegacy`;
+      const name = (document.getElementById('name').value || '').trim();
+      const score = document.getElementById('score').textContent;
+      const text = `Skor Kesiapan Keluarga saya: ${score}/100${name?` (Nama: ${name})`:''}. Cuba kuiz ini & kira pelan ganti gaji anda! #SukorZurichTakaful`;
       const url = location.href.split('#')[0];
       try{
         if(navigator.share){ await navigator.share({title: 'Kuiz Skor Kesiapan Keluarga', text, url}); }
-        else{
-          await navigator.clipboard.writeText(text + '\n' + url);
-          alert('Keputusan disalin. Boleh tampal di media sosial/WhatsApp.');
-        }
+        else{ await navigator.clipboard.writeText(text + '\n' + url); alert('Keputusan disalin. Boleh tampal di media sosial/WhatsApp.'); }
       }catch(err){ console.log(err); }
     });
   </script>
