@@ -121,7 +121,72 @@
       return ['Bahaya', 'Banyak jurang kritikal. Mulakan tindakan minimum: pelan ganti gaji bajet & bina dana kecemasan.', '#ef4444'];
     }
 
-    // ... (fungsi drawPoster, computeScore, animateBar, showResult sama macam sebelum ini)
+    function drawPoster({name, score}){
+      const canvas = document.getElementById('posterCanvas');
+      if(!canvas) return; const ctx = canvas.getContext('2d');
+      const W = canvas.width, H = canvas.height;
+      const grad = ctx.createLinearGradient(0,0,W,H);
+      grad.addColorStop(0, '#e0f2fe'); grad.addColorStop(1, '#eef2ff');
+      ctx.fillStyle = grad; ctx.fillRect(0,0,W,H);
+      ctx.fillStyle = '#0f172a';
+      ctx.font = 'bold 64px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      ctx.fillText('Skor Kesiapan Keluarga', 64, 140);
+      const [label, _, color] = badgeColor(score);
+      const cx = W/2, cy = 520, r = 180; ctx.lineWidth = 22; ctx.strokeStyle = '#e5e7eb';
+      ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI*2); ctx.stroke();
+      const ang = (score/100) * Math.PI*2; ctx.strokeStyle = color;
+      ctx.beginPath(); ctx.arc(cx, cy, r, -Math.PI/2, -Math.PI/2 + ang); ctx.stroke();
+      ctx.fillStyle = '#0f172a'; ctx.font = '900 120px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      const sc = String(Math.round(score)); const scW = ctx.measureText(sc).width;
+      ctx.fillText(sc, cx - scW/2, cy + 40);
+      ctx.font = '600 36px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      const lblW = ctx.measureText(label).width; ctx.fillStyle = color;
+      ctx.fillText(label, cx - lblW/2, cy + 90);
+      if(name){ ctx.fillStyle = '#334155'; ctx.font = '500 40px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+        const nm = `Nama: ${name}`; const nmW = ctx.measureText(nm).width; ctx.fillText(nm, cx - nmW/2, cy + 150); }
+      ctx.fillStyle = '#ffffff'; const boxX=64, boxY=760, boxW=W-128, boxH=400;
+      ctx.roundRect?.(boxX, boxY, boxW, boxH, 28); if(!ctx.roundRect){ ctx.beginPath(); ctx.rect(boxX, boxY, boxW, boxH); }
+      ctx.fill(); ctx.strokeStyle = '#e5e7eb'; ctx.lineWidth = 2; ctx.stroke();
+      ctx.fillStyle = '#0f172a'; ctx.font = '700 46px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      ctx.fillText('Tindakan Disyorkan', boxX + 40, boxY + 80);
+      ctx.fillStyle = '#334155'; ctx.font = '400 34px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      const tips = [
+        '• Mulakan pelan ganti gaji bajet & bina dana kecemasan',
+        '• Semak medical card & had tahunan',
+        '• Kemas kini penama/hibah, elak salah faham',
+        '• Kira kadar anda: hibah-calc'
+      ];
+      let y = boxY + 130; tips.forEach(t=>{ ctx.fillText(t, boxX+40, y); y += 56; });
+      ctx.fillStyle = '#64748b'; ctx.font = '400 28px system-ui, -apple-system, Segoe UI, Roboto, Poppins, sans-serif';
+      ctx.fillText('Kuiz panduan umum sahaja. Dapatkan nasihat berlesen jika perlu.', 64, H - 40);
+    }
+
+    function computeScore(form){
+      let risk = 0; const fd = new FormData(form);
+      const get = (n)=> Number(fd.get(n));
+      risk += get('emer'); risk += get('incomeProt'); risk += get('med'); risk += get('debt');
+      risk += get('dep'); risk += get('side'); risk += get('health'); risk += get('autosave'); risk += get('support');
+      if(document.getElementById('job').value === 'sendiri') risk += 8;
+      return clamp(100 - risk, 0, 100);
+    }
+
+    function animateBar(to, color){
+      const bar = document.getElementById('bar'); if(!bar) return; bar.style.background = color;
+      let cur = 0; const step = ()=>{ cur += (to - cur) * 0.15; if(Math.abs(cur - to) < 0.5) cur = to; bar.style.width = cur + '%'; if(cur !== to) requestAnimationFrame(step); };
+      step();
+    }
+
+    function showResult(score){
+      const [label, desc, color] = badgeColor(score);
+      document.getElementById('result').classList.remove('hidden');
+      document.getElementById('score').textContent = Math.round(score);
+      const lbl = document.getElementById('label'); lbl.textContent = label; lbl.style.color = color;
+      document.getElementById('desc').textContent = desc;
+      animateBar(score, color);
+      const name = (document.getElementById('name').value || '').trim();
+      drawPoster({name, score});
+      try{ localStorage.setItem('kesiapan:last', JSON.stringify({name, score, t: Date.now()})); }catch{}
+    }
 
     document.getElementById('quiz').addEventListener('submit', (e)=>{
       e.preventDefault();
